@@ -1,0 +1,16 @@
+
+# ============================================================
+# Option 1: Using build scripts (recommended)
+# ============================================================
+# Production APK
+.\build_scripts\build_apk_production.bat
+
+# Production AAB (Google Play Store)
+.\build_scripts\build_aab_production.bat
+
+#################### Option 2
+# Production APK
+flutter build apk --dart-define=PAYSTACK_SECRET_KEY=%PAYSTACK_LIVE_KEY%
+
+# Production AAB
+flutter build appbundle --dart-define=PAYSTACK_SECRET_KEY=%PAYSTACK_LIVE_KEY%

@@ -1,0 +1,101 @@
+{
+  "rules": {
+    "users": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "players": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": ["parent_id", "team_id", "status"]
+    },
+    "teams": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": ["coach_id"]
+    },
+    "training_sessions": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": ["team_id", "coach_id", "date"]
+    },
+    "attendance": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": ["player_id", "session_id"]
+    },
+    "matches": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": ["home_team_id", "away_team_id", "match_date"]
+    },
+    "match_reports": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": ["match_id", "team_id"]
+    },
+    "payments": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": ["parent_id", "player_id", "status"]
+    },
+    "notifications": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": ["recipient_id", "recipient_type"]
+    },
+    "notification_preferences": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": ["user_id"]
+    },
+    "medical_records": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": ["player_id"]
+    },
+    "audit_logs": {
+      ".read": "auth != null && (root.child('users').child(auth.uid).child('role').val() === 'owner' || root.child('users').child(auth.uid).child('role').val() === 'admin' || root.child('users').child(auth.uid).child('role').val() === 'director')",
+      ".write": "auth != null"
+    },
+    "videos": {
+      ".read": "auth != null",
+      ".write": "auth != null && (root.child('users').child(auth.uid).child('role').val() === 'owner' || root.child('users').child(auth.uid).child('role').val() === 'director' || root.child('users').child(auth.uid).child('role').val() === 'admin')",
+      ".indexOn": ["player_id", "uploaded_by", "created_at"]
+    },
+    "player_match_performance": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": ["player_id", "match_id"]
+    },
+    "sent_notifications": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "enrollments": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": ["player_id", "training_session_id", "status"]
+    },
+    "refunds": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": ["parent_id", "player_id", "payment_id"]
+    },
+    "receipts": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": ["parent_id", "payment_id"]
+    },
+    "player_progress": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": ["player_id"]
+    },
+    "user_permissions": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": ["user_id"]
+    }
+  }
+}

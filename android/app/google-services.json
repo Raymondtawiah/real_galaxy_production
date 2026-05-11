@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "115905430066",
+    "firebase_url": "https://football-21766-default-rtdb.firebaseio.com",
+    "project_id": "football-21766",
+    "storage_bucket": "football-21766.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:115905430066:android:584ed3b4e581b10697b22b",
+        "android_client_info": {
+          "package_name": "com.enochsarkodie.realgalaxyfc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "115905430066-qcu5ohdpm9ikkh5dfp95f289vk18uhi8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRFdkVyqVPQQpFC07nPIbnLHqtBrD9KRQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "115905430066-qcu5ohdpm9ikkh5dfp95f289vk18uhi8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "115905430066-5t85u1nnj0d7t1cl61pbp4tdqs3ve9hi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "apple"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:115905430066:android:4cdb3e8fb2efe93a97b22b",
+        "android_client_info": {
+          "package_name": "realGalaxy.fc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "115905430066-qcu5ohdpm9ikkh5dfp95f289vk18uhi8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRFdkVyqVPQQpFC07nPIbnLHqtBrD9KRQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "115905430066-qcu5ohdpm9ikkh5dfp95f289vk18uhi8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "115905430066-5t85u1nnj0d7t1cl61pbp4tdqs3ve9hi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "apple"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

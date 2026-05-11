@@ -1,0 +1,45 @@
+name: Clean Push Workflow
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.19.0'
+        
+    - name: Get dependencies
+      run: flutter pub get
+      
+    - name: Build APK
+      run: |
+        flutter build apk --dart-define=PAYSTACK_SECRET_KEY=${{ secrets.PAYSTACK_SECRET_KEY }}
+        
+    - name: Build AAB
+      run: |
+        flutter build appbundle --dart-define=PAYSTACK_SECRET_KEY=${{ secrets.PAYSTACK_SECRET_KEY }}
+        
+    - name: Upload APK artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: app-release.apk
+        path: build/app/outputs/flutter-apk/app-release.apk
+        
+    - name: Upload AAB artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: app-release.aab
+        path: build/app/outputs/bundle/release/app-release.aab
