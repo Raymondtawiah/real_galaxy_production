@@ -475,7 +475,7 @@ class _OwnerNotificationCenterState extends State<OwnerNotificationCenter>
       _notificationService.createPaymentReminder(
         'PAYMENT EXPIRED - URGENT',
         '🚨 URGENT: Payment for ${player.name} has EXPIRED! Please make immediate payment to continue participation in training and matches.',
-        player.parentId!,
+        player.parentId,
       );
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -488,7 +488,7 @@ class _OwnerNotificationCenterState extends State<OwnerNotificationCenter>
       _notificationService.createPaymentReminder(
         'Payment Reminder',
         'Monthly fee of ₵400 for ${player.name} is due soon',
-        player.parentId!,
+        player.parentId,
       );
       ScaffoldMessenger.of(
         context,

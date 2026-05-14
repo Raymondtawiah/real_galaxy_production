@@ -6,8 +6,6 @@ import 'package:real_galaxy/models/receipt.dart';
 import 'package:real_galaxy/models/user.dart' as app_user;
 import 'package:real_galaxy/services/firebase_service.dart';
 import 'package:real_galaxy/services/paystack_service.dart';
-import 'package:real_galaxy/services/auth_service.dart';
-import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ParentPaymentScreen extends StatefulWidget {

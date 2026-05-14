@@ -5,7 +5,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:real_galaxy/models/player.dart';
 import 'package:real_galaxy/models/team.dart';
 import 'package:real_galaxy/models/role.dart';
-import 'package:real_galaxy/models/user.dart';
 import 'package:real_galaxy/services/firebase_service.dart';
 
 class PlayersScreen extends StatefulWidget {
