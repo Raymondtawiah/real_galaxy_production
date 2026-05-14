@@ -51,8 +51,6 @@ class AppTheme {
       onSecondary: onPrimaryColor,
       error: errorColor,
       onError: onPrimaryColor,
-      background: backgroundColor,
-      onBackground: onBackgroundColor,
     ),
     useMaterial3: true,
 

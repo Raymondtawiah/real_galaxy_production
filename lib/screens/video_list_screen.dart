@@ -502,7 +502,7 @@ class _VideoUploadScreenState extends State<VideoUploadScreen> {
                         labelText: 'Select Player',
                         border: OutlineInputBorder(),
                       ),
-                      value: _selectedPlayerId,
+                      initialValue: _selectedPlayerId,
                       items: _players.map((player) {
                         return DropdownMenuItem(
                           value: player.id,

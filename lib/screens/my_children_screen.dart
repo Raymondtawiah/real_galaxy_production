@@ -23,7 +23,7 @@ class _MyChildrenScreenState extends State<MyChildrenScreen> {
   final PlayerProgressService _progressService = PlayerProgressService();
   List<Player> _players = [];
   List<Team> _teams = [];
-  Map<String, PlayerProgressSummary> _playerProgressSummaries = {};
+  final Map<String, PlayerProgressSummary> _playerProgressSummaries = {};
   bool _isLoading = true;
 
   @override

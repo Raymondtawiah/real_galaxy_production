@@ -272,7 +272,7 @@ class _PlayerProgressManagementScreenState
           border: OutlineInputBorder(),
           prefixIcon: Icon(Icons.person),
         ),
-        value: _selectedPlayer,
+        initialValue: _selectedPlayer,
         items: _players.where((p) => p.id != null).toSet().map((player) {
           return DropdownMenuItem(
             value: player,
@@ -467,7 +467,7 @@ class _PlayerProgressManagementScreenState
                         border: OutlineInputBorder(),
                         hintText: 'Select a skill',
                       ),
-                      value: _selectedSkillName,
+                      initialValue: _selectedSkillName,
                       items: _getSkillsForCategory(_selectedCategory).map((
                         skill,
                       ) {
@@ -489,7 +489,7 @@ class _PlayerProgressManagementScreenState
                         labelText: 'Category',
                         border: OutlineInputBorder(),
                       ),
-                      value: _selectedCategory,
+                      initialValue: _selectedCategory,
                       items: ProgressCategory.values.map((category) {
                         return DropdownMenuItem(
                           value: category,
@@ -514,7 +514,7 @@ class _PlayerProgressManagementScreenState
                               labelText: 'Current Level',
                               border: OutlineInputBorder(),
                             ),
-                            value: _currentLevel,
+                            initialValue: _currentLevel,
                             items: SkillLevel.values.map((level) {
                               return DropdownMenuItem(
                                 value: level,
@@ -538,7 +538,7 @@ class _PlayerProgressManagementScreenState
                               labelText: 'Target Level',
                               border: OutlineInputBorder(),
                             ),
-                            value: _targetLevel,
+                            initialValue: _targetLevel,
                             items: SkillLevel.values.map((level) {
                               return DropdownMenuItem(
                                 value: level,

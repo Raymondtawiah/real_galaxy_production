@@ -271,7 +271,7 @@ class _NotificationManagementScreenState extends State<NotificationManagementScr
 
                   // Recipient Type Dropdown
                   DropdownButtonFormField<String>(
-                    value: _selectedRecipientType,
+                    initialValue: _selectedRecipientType,
                     decoration: InputDecoration(
                       labelText: 'Send To',
                       labelStyle: const TextStyle(color: AppTheme.onBackgroundMuted),
@@ -299,7 +299,7 @@ class _NotificationManagementScreenState extends State<NotificationManagementScr
 
                   // Notification Type Dropdown
                   DropdownButtonFormField<String>(
-                    value: _selectedNotificationType,
+                    initialValue: _selectedNotificationType,
                     decoration: InputDecoration(
                       labelText: 'Notification Type',
                       labelStyle: const TextStyle(color: AppTheme.onBackgroundMuted),

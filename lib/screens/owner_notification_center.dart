@@ -460,43 +460,41 @@ class _OwnerNotificationCenterState extends State<OwnerNotificationCenter>
   }
 
   void _sendPaymentReminder(Player player) {
-    if (player.parentId != null) {
-      // Find the payment alert for this player to check status
-      final playerAlert = _paymentAlerts.firstWhere(
-        (alert) => (alert['player'] as Player).id == player.id,
-        orElse: () => {'status': 'Unknown', 'daysUntilDue': -999},
+    // Find the payment alert for this player to check status
+    final playerAlert = _paymentAlerts.firstWhere(
+      (alert) => (alert['player'] as Player).id == player.id,
+      orElse: () => {'status': 'Unknown', 'daysUntilDue': -999},
+    );
+
+    final status = playerAlert['status'] as String;
+    final daysUntilDue = playerAlert['daysUntilDue'] as int;
+    final isExpired = status == 'Overdue' || daysUntilDue < -30;
+
+    if (isExpired) {
+      // Send expired payment notification
+      _notificationService.createPaymentReminder(
+        'PAYMENT EXPIRED - URGENT',
+        '🚨 URGENT: Payment for ${player.name} has EXPIRED! Please make immediate payment to continue participation in training and matches.',
+        player.parentId!,
       );
-
-      final status = playerAlert['status'] as String;
-      final daysUntilDue = playerAlert['daysUntilDue'] as int;
-      final isExpired = status == 'Overdue' || daysUntilDue < -30;
-
-      if (isExpired) {
-        // Send expired payment notification
-        _notificationService.createPaymentReminder(
-          'PAYMENT EXPIRED - URGENT',
-          '🚨 URGENT: Payment for ${player.name} has EXPIRED! Please make immediate payment to continue participation in training and matches.',
-          player.parentId!,
-        );
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('EXPIRED payment notification sent!'),
-            backgroundColor: Colors.red,
-          ),
-        );
-      } else {
-        // Send regular payment reminder
-        _notificationService.createPaymentReminder(
-          'Payment Reminder',
-          'Monthly fee of ₵400 for ${player.name} is due soon',
-          player.parentId!,
-        );
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(const SnackBar(content: Text('Payment reminder sent!')));
-      }
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('EXPIRED payment notification sent!'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    } else {
+      // Send regular payment reminder
+      _notificationService.createPaymentReminder(
+        'Payment Reminder',
+        'Monthly fee of ₵400 for ${player.name} is due soon',
+        player.parentId!,
+      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Payment reminder sent!')));
     }
-  }
+    }
 
   void _sendCustomMessage(Player player) {
     // Custom messages are handled directly in the Payment Alerts tab

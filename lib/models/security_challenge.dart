@@ -1,5 +1,3 @@
-import 'package:real_galaxy/models/player.dart';
-import 'package:real_galaxy/models/team.dart';
 
 enum ChallengeCategory {
   low,    // Public-ish info

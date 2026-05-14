@@ -486,7 +486,7 @@ class _ParentPaymentScreenState extends State<ParentPaymentScreen>
                     ),
                     const SizedBox(height: 8),
                     DropdownButtonFormField<Player>(
-                      value: _selectedPlayer,
+                      initialValue: _selectedPlayer,
                       dropdownColor: AppTheme.surfaceVariantColor,
                       style: const TextStyle(color: AppTheme.onBackgroundColor),
                       decoration: InputDecoration(

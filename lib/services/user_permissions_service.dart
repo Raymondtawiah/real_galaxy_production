@@ -31,9 +31,9 @@ class UserPermissionsService {
         final data = Map<String, dynamic>.from(snapshot.value as Map);
 
         for (final entry in data.entries) {
-          if (entry.key != null && entry.value != null) {
+          if (entry.value != null) {
             final userData = Map<String, dynamic>.from(entry.value as Map);
-            permissions.add(UserPermissions.fromMap(entry.key!, userData));
+            permissions.add(UserPermissions.fromMap(entry.key, userData));
           }
         }
       }

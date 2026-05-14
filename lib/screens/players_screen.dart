@@ -97,7 +97,7 @@ class _PlayersScreenState extends State<PlayersScreen> {
     HealthStatus selectedHealth = HealthStatus.fit;
     PlayerStatus selectedStatus = PlayerStatus.active;
     DateTime? selectedDob;
-    File? _imageFile;
+    File? imageFile;
 
     await showDialog(
       context: context,
@@ -106,7 +106,7 @@ class _PlayersScreenState extends State<PlayersScreen> {
           backgroundColor: AppTheme.surfaceColor,
           title: const Text(
             'Add Player',
-            style: const TextStyle(color: AppTheme.onBackgroundColor),
+            style: TextStyle(color: AppTheme.onBackgroundColor),
           ),
           content: SingleChildScrollView(
             child: Column(
@@ -163,7 +163,7 @@ class _PlayersScreenState extends State<PlayersScreen> {
                     const SizedBox(width: 12),
                     Expanded(
                       child: DropdownButtonFormField<String>(
-                        value: selectedTeam?.id,
+                        initialValue: selectedTeam?.id,
                         dropdownColor: AppTheme.surfaceVariantColor,
                         style: const TextStyle(
                           color: AppTheme.onBackgroundColor,
@@ -230,7 +230,7 @@ class _PlayersScreenState extends State<PlayersScreen> {
                 ),
                 const SizedBox(height: 12),
                 DropdownButtonFormField<PlayerStatus>(
-                  value: selectedStatus,
+                  initialValue: selectedStatus,
                   dropdownColor: AppTheme.surfaceVariantColor,
                   style: const TextStyle(color: AppTheme.onBackgroundColor),
                   decoration: const InputDecoration(
@@ -260,7 +260,7 @@ class _PlayersScreenState extends State<PlayersScreen> {
                 ),
                 const SizedBox(height: 12),
                 DropdownButtonFormField<HealthStatus>(
-                  value: selectedHealth,
+                  initialValue: selectedHealth,
                   dropdownColor: AppTheme.surfaceVariantColor,
                   style: const TextStyle(color: AppTheme.onBackgroundColor),
                   decoration: const InputDecoration(
@@ -387,7 +387,7 @@ class _PlayersScreenState extends State<PlayersScreen> {
               ),
               child: const Text(
                 'Add',
-                style: const TextStyle(color: AppTheme.onBackgroundColor),
+                style: TextStyle(color: AppTheme.onBackgroundColor),
               ),
             ),
           ],
@@ -420,8 +420,8 @@ class _PlayersScreenState extends State<PlayersScreen> {
     HealthStatus selectedHealth = player.healthStatus;
     PlayerStatus selectedStatus = player.status;
     DateTime? selectedDob = player.dateOfBirth;
-    File? _imageFile;
-    bool _isSaving = false;
+    File? imageFile;
+    bool isSaving = false;
 
     await showDialog(
       context: context,
@@ -489,7 +489,7 @@ class _PlayersScreenState extends State<PlayersScreen> {
                     Expanded(
                       flex: 2,
                       child: DropdownButtonFormField<String>(
-                        value: selectedTeam?.id,
+                        initialValue: selectedTeam?.id,
                         dropdownColor: AppTheme.surfaceVariantColor,
                         style: const TextStyle(
                           color: AppTheme.onBackgroundColor,
@@ -556,7 +556,7 @@ class _PlayersScreenState extends State<PlayersScreen> {
                 ),
                 const SizedBox(height: 12),
                 DropdownButtonFormField<PlayerStatus>(
-                  value: selectedStatus,
+                  initialValue: selectedStatus,
                   dropdownColor: AppTheme.surfaceVariantColor,
                   style: const TextStyle(color: AppTheme.onBackgroundColor),
                   decoration: InputDecoration(
@@ -586,7 +586,7 @@ class _PlayersScreenState extends State<PlayersScreen> {
                 ),
                 const SizedBox(height: 12),
                 DropdownButtonFormField<HealthStatus>(
-                  value: selectedHealth,
+                  initialValue: selectedHealth,
                   dropdownColor: AppTheme.surfaceVariantColor,
                   style: const TextStyle(color: AppTheme.onBackgroundColor),
                   decoration: InputDecoration(
@@ -622,11 +622,11 @@ class _PlayersScreenState extends State<PlayersScreen> {
                     const SizedBox(height: 8),
                     Row(
                       children: [
-                        if (_imageFile != null)
+                        if (imageFile != null)
                           ClipRRect(
                             borderRadius: BorderRadius.circular(8),
                             child: Image.file(
-                              _imageFile!,
+                              imageFile!,
                               width: 60,
                               height: 60,
                               fit: BoxFit.cover,
@@ -671,7 +671,7 @@ class _PlayersScreenState extends State<PlayersScreen> {
                                   );
                                   if (picked != null) {
                                     setDialogState(() {
-                                      _imageFile = File(picked.path);
+                                      imageFile = File(picked.path);
                                     });
                                   }
                                 },
@@ -683,11 +683,11 @@ class _PlayersScreenState extends State<PlayersScreen> {
                                   minimumSize: const Size.fromHeight(36),
                                 ),
                               ),
-                              if (player.imageUrl != null || _imageFile != null)
+                              if (player.imageUrl != null || imageFile != null)
                                 TextButton(
                                   onPressed: () {
                                     setDialogState(() {
-                                      _imageFile = null;
+                                      imageFile = null;
                                     });
                                   },
                                   child: const Text(
@@ -714,7 +714,7 @@ class _PlayersScreenState extends State<PlayersScreen> {
               ),
             ),
             ElevatedButton(
-              onPressed: _isSaving
+              onPressed: isSaving
                   ? null
                   : () async {
                       if (nameController.text.trim().isEmpty) {
@@ -727,7 +727,7 @@ class _PlayersScreenState extends State<PlayersScreen> {
                         return;
                       }
 
-                      setDialogState(() => _isSaving = true);
+                      setDialogState(() => isSaving = true);
                       try {
                         final updatedPlayer = player.copyWith(
                           name: nameController.text.trim(),
@@ -780,14 +780,14 @@ class _PlayersScreenState extends State<PlayersScreen> {
                         }
                       } finally {
                         if (mounted) {
-                          setDialogState(() => _isSaving = false);
+                          setDialogState(() => isSaving = false);
                         }
                       }
                     },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppTheme.primaryColor,
               ),
-              child: _isSaving
+              child: isSaving
                   ? const SizedBox(
                       width: 16,
                       height: 16,
@@ -964,7 +964,7 @@ class _PlayersScreenState extends State<PlayersScreen> {
         value: 'edit',
         child: Text(
           'Edit',
-          style: const TextStyle(color: AppTheme.onBackgroundColor),
+          style: TextStyle(color: AppTheme.onBackgroundColor),
         ),
       ),
     ];
@@ -1082,7 +1082,7 @@ class _PlayersScreenState extends State<PlayersScreen> {
                     value: _showInactivePlayers,
                     onChanged: (value) =>
                         setState(() => _showInactivePlayers = value),
-                    activeColor: AppTheme.primaryColor,
+                    activeThumbColor: AppTheme.primaryColor,
                   ),
                   const SizedBox(width: 8),
                   Text(

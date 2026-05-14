@@ -103,7 +103,7 @@ class _TrainingSessionsScreenState extends State<TrainingSessionsScreen> {
     TimeOfDay selectedTime = const TimeOfDay(hour: 16, minute: 0);
     String selectedFocus = TrainingSession.trainingFocuses.first;
     final notesController = TextEditingController();
-    bool _isSaving = false;
+    bool isSaving = false;
 
     final validCoaches = _coaches
         .where((c) => c.id != null && c.id!.isNotEmpty)
@@ -280,10 +280,10 @@ class _TrainingSessionsScreenState extends State<TrainingSessionsScreen> {
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppTheme.primaryColor,
               ),
-              onPressed: _isSaving
+              onPressed: isSaving
                   ? null
                   : () async {
-                      setDialogState(() => _isSaving = true);
+                      setDialogState(() => isSaving = true);
                       String? errorMsg;
                       if (selectedTeamId == null) {
                         errorMsg = 'Please select a team';
@@ -297,7 +297,7 @@ class _TrainingSessionsScreenState extends State<TrainingSessionsScreen> {
                             backgroundColor: AppTheme.primaryColor,
                           ),
                         );
-                        setDialogState(() => _isSaving = false);
+                        setDialogState(() => isSaving = false);
                         return;
                       }
                       try {
@@ -326,11 +326,11 @@ class _TrainingSessionsScreenState extends State<TrainingSessionsScreen> {
                         }
                       } finally {
                         if (mounted) {
-                          setDialogState(() => _isSaving = false);
+                          setDialogState(() => isSaving = false);
                         }
                       }
                     },
-              child: _isSaving
+              child: isSaving
                   ? const SizedBox(
                       width: 20,
                       height: 20,
